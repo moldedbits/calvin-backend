@@ -1,7 +1,11 @@
 class DataController < ApplicationController
+  require 'uri'
 
   def add_url
-    url = UrlResource.create(url: params[:url])
+    urlParam = params[:url]
+    if (urlParam && urlParam =~ URI::regexp)
+      url = UrlResource.create(url: params[:url])
+    end
   end
 
   def get_random_url
