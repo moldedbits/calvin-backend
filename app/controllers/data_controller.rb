@@ -5,7 +5,7 @@ class DataController < ApplicationController
   end
 
   def get_random_url
-    if (UrlResource.blank?)
+    if (UrlResource.count.zero?)
       @url = "http://moldedbits.com"
       return
     end

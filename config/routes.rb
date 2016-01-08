@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "data#get_random_url"
+  
   post "data/add_url"
   get "data/get_random_url"
   # The priority is based upon order of creation: first created -> highest priority.
