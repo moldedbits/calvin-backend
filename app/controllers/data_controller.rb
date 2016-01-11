@@ -11,6 +11,10 @@ class DataController < ApplicationController
   def get_random_url
     if (UrlResource.count.zero?)
       @url = "http://moldedbits.com"
+      respond_to do |format|
+        format.html { render :get_random_url }
+        format.json { render :json=> {:success=>"success", :url=> @url}, :status=>200 }
+      end
       return
     end
 
@@ -24,6 +28,10 @@ class DataController < ApplicationController
     url = urls.offset(offset).first
 
     @url = url.url
+    respond_to do |format|
+      format.html { render :get_random_url }
+      format.json { render :json=> {:success=>"success", :url=> @url}, :status=>200 }
+    end
   end
 
   private
